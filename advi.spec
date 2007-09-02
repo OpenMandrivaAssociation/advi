@@ -19,8 +19,10 @@ BuildRequires:	libungif-devel
 BuildRequires:	tetex-latex
 BuildRequires:	tetex-dvips
 BuildRequires:	hevea
-BuildRequires:  png-devel
+BuildRequires:	png-devel
 BuildRequires:	freetype2-devel
+BuildRequires:	libxinerama-devel
+BuildRequires:	X11-devel
 Requires(post):	tetex
 Requires(postun): tetex
 BuildRoot: 	%{_tmppath}/%{name}-buildroot

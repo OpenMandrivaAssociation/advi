@@ -1,6 +1,6 @@
 %define name	advi
 %define version	1.6.0
-%define release	%mkrel 3
+%define release	%mkrel 4
 
 Name: 		%{name}
 Version: 	%{version}
@@ -10,8 +10,10 @@ Summary:	Programmable DVI previewer for slides written in LaTeX
 Group:		Publishing
 URL:		http://pauillac.inria.fr/advi
 Source:		ftp://ftp.inria.fr/INRIA/Projects/cristal/advi/%{name}-%{version}.tar.bz2
+Patch0:		active-dvi-1.6.0-warn-error.patch
 BuildRequires:	ocaml
 BuildRequires:	ocaml-camlimages-devel >= 2.20
+BuildRequires:	ocaml-labltk
 BuildRequires:	libtiff-devel
 BuildRequires:	libungif-devel
 BuildRequires:	tetex-latex
@@ -54,12 +56,14 @@ source code of the presenter.
 
 %prep
 %setup -q
+%patch0 -p2
 find . -type d -name CVS | xargs rm -rf
 find . -type f -name ".*" | xargs rm -f
 rm -f doc/index.html
+sed -i -e "s/resize_window/resize_subwindow/" grY11.c
 
 %build
-%configure
+%configure2_5x
 %make
 # remove empty file
 rm -f doc/splash.out

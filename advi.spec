@@ -20,6 +20,7 @@ BuildRequires:	tetex-latex
 BuildRequires:	tetex-dvips
 BuildRequires:	hevea
 BuildRequires:  png-devel
+BuildRequires:	freetype2-devel
 Requires(post):	tetex
 Requires(postun): tetex
 BuildRoot: 	%{_tmppath}/%{name}-buildroot

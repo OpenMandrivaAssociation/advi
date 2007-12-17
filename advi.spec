@@ -25,7 +25,6 @@ BuildRequires:	libxinerama-devel
 BuildRequires:	X11-devel
 Requires(post):	tetex
 Requires(postun): tetex
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 
 %description 
 To preview DVI files, Active-DVI features:

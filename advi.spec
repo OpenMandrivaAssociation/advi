@@ -1,6 +1,6 @@
 %define name	advi
 %define version	1.6.0
-%define release	%mkrel 4
+%define release	%mkrel 6
 
 Name: 		%{name}
 Version: 	%{version}

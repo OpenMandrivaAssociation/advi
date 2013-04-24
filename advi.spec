@@ -11,7 +11,7 @@ BuildRequires:	ocaml
 BuildRequires:	ocaml-camlimages-devel >= 2.20
 BuildRequires:	ocaml-labltk
 BuildRequires:	libtiff-devel
-BuildRequires:	libungif-devel
+BuildRequires:	ungif-devel
 BuildRequires:	tetex-latex
 BuildRequires:	tetex-dvips
 BuildRequires:	hevea

@@ -1,10 +1,6 @@
-%define name	advi
-%define version	1.6.0
-%define release	%mkrel 7
-
-Name: 		%{name}
-Version: 	%{version}
-Release: 	%{release}
+Name: 		advi
+Version: 	1.6.0
+Release: 	8
 License: 	LGPL
 Summary:	Programmable DVI previewer for slides written in LaTeX
 Group:		Publishing
@@ -20,12 +16,11 @@ BuildRequires:	tetex-latex
 BuildRequires:	tetex-dvips
 BuildRequires:	hevea
 BuildRequires:	png-devel
-BuildRequires:	freetype2-devel
+BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	libxinerama-devel
 BuildRequires:	X11-devel
 Requires(post):	tetex
 Requires(postun): tetex
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 
 %description 
 To preview DVI files, Active-DVI features:
@@ -72,21 +67,16 @@ sed -i -e "s/resize_window/resize_subwindow/" grY11.c
 rm -f doc/splash.out
 
 %install
-rm -rf $RPM_BUILD_ROOT
-install -d -m 755 $RPM_BUILD_ROOT%{_bindir}
-install -d -m 755 $RPM_BUILD_ROOT%{_datadir}/texmf/tex/latex/%{name}
-install -m 755 advi.opt $RPM_BUILD_ROOT%{_bindir}/%{name}
-install -m 644 doc/{scratch_write_,scratch_draw_,}splash.dvi tex/* $RPM_BUILD_ROOT%{_datadir}/texmf/tex/latex/%{name}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+install -d -m 755 %{buildroot}%{_bindir}
+install -d -m 755 %{buildroot}%{_datadir}/texmf/tex/latex/%{name}
+install -m 755 advi.opt %{buildroot}%{_bindir}/%{name}
+install -m 644 doc/{scratch_write_,scratch_draw_,}splash.dvi tex/* %{buildroot}%{_datadir}/texmf/tex/latex/%{name}
 
 %post -p %{_bindir}/mktexlsr
 
 %postun -p %{_bindir}/mktexlsr
 
 %files
-%defattr(-,root,root)
 %doc Announce COPYING INDEX INSTALL LGPL README TODO doc
 %{_bindir}/%{name}
 %{_datadir}/texmf/tex/latex/%{name}

@@ -91,7 +91,7 @@ cp *.m4 m4/
 %build
 autoreconf
 %configure2_5x
-%make
+make
 
 %install
 %makeinstall_std

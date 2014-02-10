@@ -1,0 +1,50 @@
+Author: Ralf Treinen <treinen@debian.org>
+Description: Small improvement of manpage, and one typo
+Forwarded: 2001-10-21
+
+Index: advi/doc/advi.1
+===================================================================
+--- advi.orig/doc/advi.1	2011-05-01 14:52:34.000000000 +0200
++++ advi/doc/advi.1	2011-05-01 14:57:57.000000000 +0200
+@@ -18,9 +18,6 @@
+ .SH NAME
+ .B advi
+ \-\- a DVI previewer and presenter
+-.URL http://caml.inria.fr/advi/
+-(http://caml.inria.fr/advi/)
+-.UE
+ with some eye candy effects for presentation.
+ 
+ .SH VERSION
+@@ -328,7 +325,7 @@
+ Geometry GEOM is specified in pixels, using the standard format
+ for specifying geometries (i.e.,  "WIDTHxHEIGHT[+XOFFSET+YOFFSET]").
+ 
+-Dimensions (for options `-hmargin' and `-vmargin') are specified as
++Dimensions (for options `\-hmargin' and `\-vmargin') are specified as
+ numbers optionally followed by two letters representing units.
+ When no units are given, dimensions are treated as numbers of pixels.
+ Currently supported units are the standard TeX units as specified in
+@@ -349,7 +346,7 @@
+ 
+ Advi recognizes the following keystrokes when typed in its window.
+ Some of them may optionally be preceded by a number, called ARG below,
+-whose interpretation is keystroke dependant. If ARG is unset, its
++whose interpretation is keystroke dependent. If ARG is unset, its
+ value is 1.
+ 
+ Advi maintains an history of previously visited pages organized as a stack.
+@@ -570,10 +567,9 @@
+ .SH SEE ALSO
+ .BR latex (1),
+ .BR kpsewhich (1),
+-the Active\-DVI user's 
+-.URL http://caml.inria.fr/advi/manual.dvi manual ,
+-and the 
+-.URL http://caml.inria.fr/advi/faq.html FAQ
++the user's manual (http://caml.inria.fr/advi/manual.dvi),
++and the advi FAQ (http://caml.inria.fr/advi/faq.html).
++
+ .SH AUTHORS
+ Jun Furuse <Jun.Furuse@inria.fr>
+ Pierre Weis <Pierre.Weis@inria.fr>

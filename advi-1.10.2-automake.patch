@@ -1,0 +1,12 @@
+diff -urN advi-1.10.2/configure.ac advi-1.10.2-patched/configure.ac
+--- advi-1.10.2/configure.ac	2014-02-10 20:24:59.345102863 +1100
++++ advi-1.10.2-patched/configure.ac	2014-02-10 20:25:24.442499198 +1100
+@@ -8,6 +8,8 @@
+ AM_INIT_AUTOMAKE([foreign])
+ AM_MAINTAINER_MODE
+ 
++AC_CONFIG_MACRO_DIR([m4])
++
+ # Checking ocaml
+ AC_PROG_OCAML()
+ AC_SUBST(OCAMLLIB)

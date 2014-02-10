@@ -1,0 +1,24 @@
+Author: Ralf Treinen <treinen@debian.org>
+Description: Fix typo in messages issued by the program.
+Forwarded: 2011-10-21
+
+--- advi.orig/src/launch.ml	2010-04-05 11:23:34.000000000 +0200
++++ advi/src/launch.ml	2010-04-05 11:24:11.000000000 +0200
+@@ -92,7 +92,7 @@
+       set_policy Exec))
+   "  set the security policy to \"Exec\" mode, i.e.\
+   \n\t all embedded applications are automatically executed.\
+-  \n\t Unless explicitely required, this mode does not apply.";;
++  \n\t Unless explicitly required, this mode does not apply.";;
+ 
+ Options.add
+   "-safer"
+@@ -102,7 +102,7 @@
+       set_policy Safer))
+   "  set the security policy to \"Safer\" mode, i.e.\
+   \n\t external applications are simply ignored.\
+-  \n\t Unless explicitely required, this mode does not apply.";;
++  \n\t Unless explicitly required, this mode does not apply.";;
+ 
+ Options.add
+   "-ask"

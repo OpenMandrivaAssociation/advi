@@ -1,0 +1,19 @@
+Author: Ralf Treinen <treinen@debian.org>
+Description: do not load .advirc from the working directory
+
+--- advi.orig/src/userfile.ml	2010-03-08 20:38:03.000000000 +0100
++++ advi/src/userfile.ml	2010-03-08 20:40:38.000000000 +0100
+@@ -148,13 +148,11 @@
+ let default_init_file1 = Filename.concat user_home_dir ".advirc";;
+ let default_init_file2 =
+   tilde_subst (Filename.concat default_user_advi_dir "advirc");;
+-let default_init_file3 = ".advirc";;
+ 
+ let init_files = [
+   default_init_file0;
+   default_init_file1;
+   default_init_file2;
+-  default_init_file3;
+ ];;
+ 
+ let load_options_file options set_dvi_filename usage_msg fname =

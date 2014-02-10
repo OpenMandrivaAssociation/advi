@@ -1,0 +1,16 @@
+Author: Ralf Treinen <treinen@debian.org>
+Description: do not attempt to make doc
+
+Index: advi/Makefile.in
+===================================================================
+--- advi.orig/Makefile.in	2011-10-21 16:15:11.000000000 +0200
++++ advi/Makefile.in	2011-10-21 16:15:22.000000000 +0200
+@@ -225,7 +225,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-SUBDIRS = src tex doc
++SUBDIRS = src tex
+ # SUBDIRS = src 
+ DIST_SUBDIRS = $(SUBDIRS) examples
+ CVSRELEASETAG = Release-$(subst .,_,$(VERSION))

@@ -1,28 +1,37 @@
-Name: 		advi
-Version: 	1.6.0
-Release: 	8
-License: 	LGPL
 Summary:	Programmable DVI previewer for slides written in LaTeX
+Name:		advi
+Version:	1.10.2
+Release:	1
+License:	LGPLv2.1+
 Group:		Publishing
-URL:		http://pauillac.inria.fr/advi
-Source:		ftp://ftp.inria.fr/INRIA/Projects/cristal/advi/%{name}-%{version}.tar.bz2
-Patch0:		active-dvi-1.6.0-warn-error.patch
-BuildRequires:	ocaml
-BuildRequires:	ocaml-camlimages-devel >= 2.20
-BuildRequires:	ocaml-labltk
-BuildRequires:	libtiff-devel
-BuildRequires:	ungif-devel
-BuildRequires:	tetex-latex
-BuildRequires:	tetex-dvips
+Url:		http://advi.inria.fr/
+Source:		http://advi.inria.fr/%{name}-%{version}.tar.gz
+Patch0:		advi-1.10.2-dont-make-doc.patch
+Patch1:		advi-1.10.2-manpage.patch
+Patch2:		advi-1.10.2-no-local-advirc.patch
+Patch3:		advi-1.10.2-typo-message.patch
+Patch4:		advi-1.10.2-automake.patch
+BuildRequires:	ghostscript
 BuildRequires:	hevea
-BuildRequires:	png-devel
+BuildRequires:	imagemagick
+BuildRequires:	ocaml
+BuildRequires:	ocaml-labltk
+BuildRequires:	tetex-dvips
+BuildRequires:	tetex-latex
+BuildRequires:	texlive-kpathsea
+BuildRequires:	ocaml-camlimages-devel >= 4.0
+BuildRequires:	ungif-devel
 BuildRequires:	pkgconfig(freetype2)
-BuildRequires:	libxinerama-devel
-BuildRequires:	X11-devel
-Requires(post):	tetex
-Requires(postun): tetex
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(libtiff-4)
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xinerama)
+Requires:	ghostscript
+Requires:	hevea
+Requires:	imagemagick
+Requires(post,postun):	texlive-kpathsea
 
-%description 
+%description
 To preview DVI files, Active-DVI features:
 
     * Color anti-aliasing.
@@ -32,7 +41,7 @@ To preview DVI files, Active-DVI features:
     * Gpic specials to display pictures.
     * Correct treatment of many (but not all) inlined-Postscript specials.
     * Page background settings.
-    * Japanese pTeX DVI extension support (screen shot). 
+    * Japanese pTeX DVI extension support (screen shot).
 
 To present your DVI files, Active-DVI features:
 
@@ -52,32 +61,40 @@ file via the macros of the advi.sty LaTeX package provided by the distribution.
 In addition, Caml hackers can program new and fancy Active-DVI effects in the
 source code of the presenter.
 
-%prep
-%setup -q
-%patch0 -p2
-find . -type d -name CVS | xargs rm -rf
-find . -type f -name ".*" | xargs rm -f
-rm -f doc/index.html
-sed -i -e "s/resize_window/resize_subwindow/" grY11.c
-
-%build
-%configure2_5x
-%make
-# remove empty file
-rm -f doc/splash.out
-
-%install
-install -d -m 755 %{buildroot}%{_bindir}
-install -d -m 755 %{buildroot}%{_datadir}/texmf/tex/latex/%{name}
-install -m 755 advi.opt %{buildroot}%{_bindir}/%{name}
-install -m 644 doc/{scratch_write_,scratch_draw_,}splash.dvi tex/* %{buildroot}%{_datadir}/texmf/tex/latex/%{name}
+%files
+%doc COPYING LGPL README TODO doc
+%{_bindir}/%{name}
+%{_bindir}/%{name}.byt
+%{_libdir}/ocaml/stublibs/dll%{name}.so
+%{_datadir}/texmf/tex/latex/%{name}/
+%{_mandir}/man1/%{name}.1*
 
 %post -p %{_bindir}/mktexlsr
 
 %postun -p %{_bindir}/mktexlsr
 
-%files
-%doc Announce COPYING INDEX INSTALL LGPL README TODO doc
-%{_bindir}/%{name}
-%{_datadir}/texmf/tex/latex/%{name}
+#----------------------------------------------------------------------------
+
+%prep
+%setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+rm -f doc/index.html
+
+mkdir m4
+cp *.m4 m4/
+
+%build
+autoreconf
+%configure2_5x
+%make
+
+%install
+%makeinstall_std
+
+# To avoid "E: unstripped-binary-or-object"
+chmod 0755 %{buildroot}%{_libdir}/ocaml/stublibs/dll%{name}.so
 

@@ -15,6 +15,7 @@ BuildRequires:	ghostscript
 BuildRequires:	hevea
 BuildRequires:	imagemagick
 BuildRequires:	ocaml
+BuildRequires:	ocaml-findlib
 BuildRequires:	ocaml-labltk
 BuildRequires:	tetex-dvips
 BuildRequires:	tetex-latex

@@ -1,7 +1,7 @@
 Summary:	Programmable DVI previewer for slides written in LaTeX
 Name:		advi
 Version:	1.10.2
-Release:	1
+Release:	2
 License:	LGPLv2.1+
 Group:		Publishing
 Url:		http://advi.inria.fr/

@@ -16,7 +16,7 @@ BuildRequires:	hevea
 BuildRequires:	imagemagick
 BuildRequires:	ocaml
 BuildRequires:	ocaml-findlib
-BuildRequires:	ocaml-labltk
+BuildRequires:	ocaml-labltk2
 BuildRequires:	tetex-dvips
 BuildRequires:	tetex-latex
 BuildRequires:	texlive-kpathsea

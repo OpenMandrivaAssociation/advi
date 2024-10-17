@@ -4,7 +4,7 @@ Version:	1.10.2
 Release:	2
 License:	LGPLv2.1+
 Group:		Publishing
-Url:		http://advi.inria.fr/
+Url:		https://advi.inria.fr/
 Source:		http://advi.inria.fr/%{name}-%{version}.tar.gz
 Patch0:		advi-1.10.2-dont-make-doc.patch
 Patch1:		advi-1.10.2-manpage.patch
